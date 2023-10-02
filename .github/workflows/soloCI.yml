@@ -30,6 +30,18 @@ jobs:
       #- uses: gradle/gradle-build-action@v1
       #  with:
       #    gradle-version: 2.1
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v2
+        with:
+    # This path is specific to Gradle
+          path: 
+           ~/.gradle/caches
+           ~/.gradle/wrapper
+    # This key is specific to the project and Gradle version
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+    # Restore keys are used if the key doesn't match
+          restore-keys:  ${{ runner.os }}-gradle-
       
       - uses: gradle/gradle-build-action@v2
         with:
