@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v3 #descarga el repositorio en el ejecutor
 
       - name: Set up JDK 8
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v3 
         with:
             java-version: '8'
             distribution: 'adopt'
@@ -26,12 +26,17 @@ jobs:
   
         #### BUILDS ######
       #- uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+      - uses: gradle/gradle-build-action@v2
+        with:
+         gradle-version: 2.6.0
         
       - name: build del Front
         working-directory: src/Clients
         run: ./gradlew build
+      - uses: actions/upload-artifact@v3 #guarda en Artifacts el resultado del build. opcional.
+        with:
+           name: Clients
+           path: build/libs
     
       - name: build del Back
         working-directory: src/Backend/OrderService
