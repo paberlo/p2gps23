@@ -26,11 +26,12 @@ jobs:
   
         
       #### BUILDS ######
-      - uses: gradle/gradle-build-action@v1 #la v2 de esta action usa cache y da problemas de dependencias con el build de gradle
-        #with:
+      - uses: gradle/gradle-build-action@v2.6.0 #la v2 de esta action usa cache y da problemas de dependencias con el build de gradle
+        with:
+          gradle-version: 2.1
         # cache-disabled: true
         # build-root-directory: src/Clients
-        # gradle-version: 2.1
+        
          
       - name: build del Front
         working-directory: src/Clients
