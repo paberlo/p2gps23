@@ -34,7 +34,7 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
          working-directory: src/Clients
-         arguments: build
+         arguments: ./gradlew build
          configuration-cache: false
         
       - name: build del Front
