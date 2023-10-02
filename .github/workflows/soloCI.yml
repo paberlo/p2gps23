@@ -28,7 +28,7 @@ jobs:
       #- uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
       - uses: gradle/gradle-build-action@v2
         with:
-         gradle-version: 2.6.0
+         gradle-version: 2.6
         
       - name: build del Front
         working-directory: src/Clients
