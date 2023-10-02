@@ -21,22 +21,18 @@ jobs:
         with:
             java-version: '8'
             distribution: 'adopt'
-            server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+            server-id: github 
             settings-path: ${{ github.workspace }} # location for the settings.xml file
-      #- name: set up gradle
-      #  uses: gradle/gradle-build-action@v2
-        #with:
-         #   gradle-version: 2.1
-
-    #### BUILDS ######
-      - uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
-      - name: Build with Gradle
+  
+        #### BUILDS ######
+      #- uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2.1
+        
+      - name: build del Front
         working-directory: src/Clients
         run: ./gradlew build
-    #  - name: hacer build del frontend 
-        
-     #   run: ./gradlew build
-         
-      - name: hacer build del backend
+    
+      - name: build del Back
         working-directory: src/Backend/OrderService
         run: ./gradlew build test
