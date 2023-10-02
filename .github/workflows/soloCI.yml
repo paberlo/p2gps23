@@ -33,8 +33,8 @@ jobs:
 
       - uses: gradle/gradle-build-action@v2
         with:
-         gradle-version: 2.1
-         cache-write-only: true
+         arguments: build
+         configuration-cache: false
         
       - name: build del Front
         working-directory: src/Clients
