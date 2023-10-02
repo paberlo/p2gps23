@@ -32,6 +32,10 @@ jobs:
       #    gradle-version: 2.1
 
       - uses: gradle/gradle-build-action@v2.0-beta.1
+        with:
+         build-root-directory: src/Clients
+         gradle-version: 2.1
+         
       - name: build del Front
         working-directory: src/Clients
         run: ./gradlew build --no-build-cache
