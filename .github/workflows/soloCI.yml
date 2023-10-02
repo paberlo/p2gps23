@@ -33,6 +33,7 @@ jobs:
 
       - uses: gradle/gradle-build-action@v2
         with:
+         working-directory: src/Clients
          arguments: build
          configuration-cache: false
         
