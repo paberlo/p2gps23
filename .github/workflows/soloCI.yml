@@ -26,17 +26,14 @@ jobs:
   
         
       #### BUILDS ######
-      - uses: gradle/gradle-build-action@v2.6.0 #la v2 de esta action usa cache y da problemas de dependencias con el build de gradle
+      - uses: gradle/gradle-build-action@v2.6.0 #la última versión de v2 usa cache y da problemas de dependencias con el build
         with:
           gradle-version: 2.1
-        # cache-disabled: true
-        # build-root-directory: src/Clients
-        
-         
+               
       - name: build del Front
         working-directory: src/Clients
         run: ./gradlew build 
-      - uses: actions/upload-artifact@v3 #guardar en Artifacts el resultado del build. No hace falta, es opcional.
+      - uses: actions/upload-artifact@v3 #guardar en Artifacts el resultado del build. No hace falta, es por curiosidad.
         with:
            name: Clients
            path: src/Clients/build/libs
