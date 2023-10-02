@@ -26,20 +26,22 @@ jobs:
   
         #### BUILDS ######
       #- uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
-      - uses: gradle/gradle-build-action@v1
+      
+      #- uses: gradle/gradle-build-action@v1
+      #  with:
+      #    gradle-version: 2.1
+      
+      - uses: gradle/gradle-build-action@v2
         with:
-          gradle-version: 2.1
-      #- uses: gradle/gradle-build-action@v2
-       # with:
-       #  gradle-version: 2.6
+         gradle-version: 2.1
         
       - name: build del Front
         working-directory: src/Clients
-        run: ./gradlew build
+        run: ./gradlew build --no-build-cache
       - uses: actions/upload-artifact@v3 #guarda en Artifacts el resultado del build. opcional.
         with:
            name: Clients
-           path: build/libs
+           path: src/Clients/build/libs
     
       - name: build del Back
         working-directory: src/Backend/OrderService
