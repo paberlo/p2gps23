@@ -26,7 +26,7 @@ jobs:
   
         #### BUILDS ######
       #- uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
-      - uses: gradle/gradle-build-action@e6cf70745ac11fa943e19294d19a2c527a669a53
+      - uses: gradle/gradle-build-action@v1
       #- uses: gradle/gradle-build-action@v2
        # with:
        #  gradle-version: 2.6
