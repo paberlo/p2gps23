@@ -24,22 +24,18 @@ jobs:
             server-id: github 
             settings-path: ${{ github.workspace }} # location for the settings.xml file
   
-        #### BUILDS ######
-      #- uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
-      
-      #- uses: gradle/gradle-build-action@v1
-      #  with:
-      #    gradle-version: 2.1
-
-      - uses: gradle/gradle-build-action@v2.0-beta.1
+        
+      #### BUILDS ######
+      - uses: gradle/gradle-build-action@v2 #.0-beta.1 #la v2 de esta action usa cache y da problemas de dependencias con el build de gradle
         with:
+         cache-disabled: true
          build-root-directory: src/Clients
          gradle-version: 2.1
          
       - name: build del Front
         working-directory: src/Clients
         run: ./gradlew build 
-      - uses: actions/upload-artifact@v3 #guarda en Artifacts el resultado del build. opcional.
+      - uses: actions/upload-artifact@v3 #guardar en Artifacts el resultado del build. No hace falta, es opcional.
         with:
            name: Clients
            path: src/Clients/build/libs
