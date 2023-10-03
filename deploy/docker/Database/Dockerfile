@@ -1,7 +1,6 @@
-FROM mongo
+FROM mongo:3.4
 
-MAINTAINER juliens@microsoft.com
+COPY drop/* usar/local/data/db/
 
-COPY drop/* /tmp/
-
+#CMD es lo mismo que ENTRYPOINT pero con otro formato
 CMD ["mongod", "--smallfiles", "--rest"]
