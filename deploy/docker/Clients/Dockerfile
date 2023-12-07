@@ -7,5 +7,3 @@ EXPOSE 8080
 
 ENTRYPOINT ["catalina.sh", "run"]
 
-#EXPOSE 8082
-#ENTRYPOINT P=8082 ;sed "s/8080/$P/g" < conf/server.xml > /tmp/srv.xml && catalina.sh run -config /tmp/srv.xml
