@@ -5,9 +5,9 @@ on:
     branches: [ master ]
   workflow_dispatch:
 
-permissions: # nuevo para CD
-  id-token: write
-  contents: read
+#permissions: # nuevo para CD
+ # id-token: write
+ # contents: read
 
 jobs:
   build:
@@ -15,7 +15,9 @@ jobs:
     permissions:
       contents: write
       packages: write
-
+      id-token: write
+      contents: read
+  
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3 #descarga el repositorio en el ejecutor
