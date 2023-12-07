@@ -5,9 +5,7 @@ on:
     branches: [ master ]
   workflow_dispatch:
 
-#permissions: # nuevo para CD
- # id-token: write
- # contents: read
+
 
 jobs:
   build:
@@ -15,8 +13,8 @@ jobs:
     permissions:
       contents: write
       packages: write
-      id-token: write
-      #contents: read
+      id-token: write # nuevo para CDeployment
+      
   
     steps:
       - name: Checkout repository
@@ -80,16 +78,17 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           enable-AzPSSession: true
           
+       ### Desplegar nuestro App Service multicontenedor   
       - name: Azure CLI script
         uses: azure/CLI@v1
         with:
           azcliversion: latest
           inlineScript: |
-            az account show
+            az webapp start --name p2gps --resource-group recursosGPS
 
-      - name: Azure PowerShell script
-        uses: azure/powershell@v1.2.0
-        with:
-          azPSVersion: "latest"
-          inlineScript: |
-            Get-AzContext
+    #  - name: Azure PowerShell script
+     #   uses: azure/powershell@v1.2.0
+     #   with:
+     #     azPSVersion: "latest"
+     #     inlineScript: |
+     #       Get-AzContext
