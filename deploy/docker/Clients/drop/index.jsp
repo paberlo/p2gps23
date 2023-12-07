@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <%
      
-	response.sendRedirect("https://p2gps-tuidunico.azurewebsites.net/mrp");
+	response.sendRedirect("https://p2gps.azurewebsites.net/mrp");
 %>
