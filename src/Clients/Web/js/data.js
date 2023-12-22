@@ -60,7 +60,7 @@
 
         return WinJS.xhr({ url: baseAddress + "/shipments", headers: rest_headers }).then(function (response) {
             if (response.status == 0) {
-                reporterror("Could not retrieve deliveries", "Unfortunately, the server could not be contacted in order to retrieve delivery details.", "");
+                reporterror("Could not retrieve deliveries", "Unfortunately, the server "+ url+" could not be contacted in order to retrieve delivery details.", "");
                 return false;
             }
             Data.deliveries.splice(0, Data.deliveries.length);
@@ -73,7 +73,7 @@
             });
             return WinJS.Promise.wrap(Data.deliveries);
         }, function (err) {
-            reporterror("Could not retrieve deliveries", "Unfortunately, the server could not be contacted in order to retrieve delivery details.", err);
+            reporterror("Could not retrieve deliveries", "Unfortunately, the server   "+ url+"  could not be contacted in order to retrieve delivery details.", err);
             return WinJS.Promise.wrap(null);
         });
     }
@@ -550,7 +550,7 @@
 
         return WinJS.xhr({ url: baseAddress + "/catalog?unique=" + Date.now(), headers: rest_headers }).then(function (response) {
             if (response.status == 0) {
-                reporterror("Could not retrieve datalog", "Unfortunately, the server could not be contacted in order to retrieve datalog details.", "");
+                reporterror("Could not retrieve datalog", "Unfortunately, the server  could not be contacted in order to retrieve datalog details.", "");
                 return null;
             }
             Data.catalog.splice(0, Data.catalog.length);
