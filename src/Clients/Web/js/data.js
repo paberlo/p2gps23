@@ -60,7 +60,7 @@
 
         return WinJS.xhr({ url: baseAddress + "/shipments", headers: rest_headers }).then(function (response) {
             if (response.status == 0) {
-                reporterror("Could not retrieve deliveries", "Unfortunately, the server "+ url+" could not be contacted in order to retrieve delivery details.", "");
+                reporterror("Could not retrieve deliveries", baseAddress, "");
                 return false;
             }
             Data.deliveries.splice(0, Data.deliveries.length);
@@ -73,7 +73,7 @@
             });
             return WinJS.Promise.wrap(Data.deliveries);
         }, function (err) {
-            reporterror("Could not retrieve deliveries", "Unfortunately, the server   "+ url+"  could not be contacted in order to retrieve delivery details.", err);
+            reporterror("Could not retrieve deliveries", baseAddress, err);
             return WinJS.Promise.wrap(null);
         });
     }
@@ -649,7 +649,7 @@
 
         return WinJS.xhr({ url: baseAddress + "/dealers?unique=" + Date.now(), headers: rest_headers }).then(function (response) {
             if (response.status == 0) {
-                reporterror("Could not retrieve dealers", "Unfortunately, the server could not be contacted in order to retrieve dealer details.", "");
+                reporterror("Could not retrieve dealers", baseAddress, "");
                 return null;
             }
             Data.dealers.splice(0, Data.dealers.length);
@@ -659,7 +659,7 @@
             });
             return WinJS.Promise.wrap(dealers);
         }, function (err) {
-            reporterror("Could not retrieve dealers", "Unfortunately, the server could not be contacted in order to retrieve dealer details.", err);
+            reporterror("Could not retrieve dealers", baseAddress, err);
             return WinJS.Promise.wrap(null);
         });
     }
