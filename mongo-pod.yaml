@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kompose.cmd: E:\Dropbox\DOCENCIA\GPS\repos\p2gps23\PartsUnlimitedMRP\kompose.exe convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: mongo
+  name: mongo
+spec:
+  containers:
+    - image: paberlo/p2gps23:db
+      name: mongo
+      ports:
+        - containerPort: 28017
+        - containerPort: 27017
+      resources:
+        limits:
+          cpu: 150m
+          memory: "209715200"
+      volumeMounts:
+        - mountPath: /data/db
+          name: db-data
+  restartPolicy: OnFailure
+  volumes:
+    - name: db-data
+      persistentVolumeClaim:
+        claimName: db-data
+status: {}

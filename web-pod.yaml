@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kompose.cmd: E:\Dropbox\DOCENCIA\GPS\repos\p2gps23\PartsUnlimitedMRP\kompose.exe convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: web
+  name: web
+spec:
+  containers:
+    - image: paberlo/p2gps23:web
+      name: web
+      ports:
+        - containerPort: 8080
+      resources:
+        limits:
+          cpu: 250m
+          memory: "314572800"
+  restartPolicy: OnFailure
+status: {}
