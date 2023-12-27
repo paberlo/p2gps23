@@ -84,7 +84,10 @@ jobs:
         with:
           azcliversion: latest
           inlineScript: |
-            az webapp start --name p2gps --resource-group recursosGPS
+            docker context use contextoGPS
+            docker compose -f docker-composeCD up 
+            dokcer ps
+            
 
     #  - name: Azure PowerShell script
      #   uses: azure/powershell@v1.2.0
