@@ -79,15 +79,15 @@ jobs:
           enable-AzPSSession: true
           
        ### Desplegar nuestros contenedores   
-      - name: Use Docker
-        uses: actions-hub/docker/cli@master
-        env:
-          SKIP_LOGIN: true
-      - run: |
-            docker login azure
-            docker context use contextoGPS
-            docker compose -f docker-composeCD up 
-            dokcer ps
+     # - name: Use Docker
+     #   uses: actions-hub/docker/cli@master
+     #   env:
+     #     SKIP_LOGIN: true
+     # - run: |
+     #       docker login azure
+     #       docker context use contextoGPS
+     #       docker compose -f docker-composeCD up 
+     #       dokcer ps
           
         #uses: azure/CLI@v1
         #with:
@@ -98,9 +98,10 @@ jobs:
             #dokcer ps
             
 
-    #  - name: Azure PowerShell script
-     #   uses: azure/powershell@v1.2.0
-     #   with:
-     #     azPSVersion: "latest"
-     #     inlineScript: |
-     #       Get-AzContext
+      - name: Azure PowerShell script
+        uses: azure/powershell@v1.2.0
+        with:
+         azPSVersion: "latest"
+         inlineScript: |
+           Get-AzContext
+           docker context use contextoGPS
