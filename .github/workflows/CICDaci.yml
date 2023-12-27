@@ -83,7 +83,7 @@ jobs:
         uses: withlogicco/setup-compose-cli@v1
       - name: lanzar pila
         run: |
-            docker --context=contextoGPS compose -f ./docker-composeCD.yml up
+            docker compose -f ./docker-composeCD.yml up
             docker ps
           
         #uses: azure/CLI@v1
