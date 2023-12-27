@@ -79,9 +79,10 @@ jobs:
           enable-AzPSSession: true
           
        ### Desplegar nuestros contenedores   
-      - name: docker compose
-      - uses: withlogicco/setup-compose-cli@v1
-      - run: |
+      - name: docker compose setup
+        uses: withlogicco/setup-compose-cli@v1
+      - name: lanzar pila
+        run: |
             docker --context=contextoGPS compose -f ./docker-composeCD.yml up
             docker ps
           
