@@ -84,6 +84,7 @@ jobs:
         env:
           SKIP_LOGIN: true
       - run: |
+            docker login azure
             docker context use contextoGPS
             docker compose -f docker-composeCD up 
             dokcer ps
