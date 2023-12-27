@@ -79,12 +79,14 @@ jobs:
           enable-AzPSSession: true
           
        ### Desplegar nuestros contenedores   
-      - name: docker compose setup
-        uses: withlogicco/setup-compose-cli@v1
-      - name: lanzar pila
-        run: |
-            docker compose -f ./docker-composeCD.yml up
-            docker ps
+      - name: Use Docker
+        uses: actions-hub/docker/cli@master
+        env:
+          SKIP_LOGIN: true
+      - run: |
+            docker context use contextoGPS
+            docker compose -f docker-composeCD up 
+            dokcer ps
           
         #uses: azure/CLI@v1
         #with:
